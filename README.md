@@ -42,6 +42,7 @@ Follow these instructions to set up the Health Blog App for development on your 
     ```
     python -m venv venv
     source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    .\venv\Scripts\activate.bat
     ```
 
 3. **Install dependencies**
