@@ -34,7 +34,7 @@ Follow these instructions to set up the Health Blog App for development on your 
 
     ```
     git clone https://github.com/Rajanrj99/helthblog2.git
-    cd healthblog
+    cd helthblog2
     ```
 
 2. **Create and activate a virtual environment (recommended)**
