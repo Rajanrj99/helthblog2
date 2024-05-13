@@ -25,12 +25,12 @@
         <p>No comments yet.</p>
     {% endfor %}
 </section>
-
+{% load crispy_forms_tags %}
 <section class="container mt-4">
     <h3>Add a Comment</h3>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|crispy }}
         <button type="submit" class="btn btn-success">Submit</button>
     </form>
 </section>
