@@ -1,84 +1,37 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="content">
-    <div><h2>{{ post.title }}</h2></div>
-    <div><p>{{ post.content }}</p></div>
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            {% if post.image %}
+            <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}" style="width: 100%; height: auto;">
+            {% endif %}
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.content }}</p>
+        </div>
+    </div>
 </div>
 
-<section>
-    <h3>comments</h3>
-    {% for comment in comment %}
-            <div>
-            <div class="comment">
-                <div>{{ comment.author }} said: "{{ comment.text }}"</div>
+<section class="container mt-4">
+    <h3>Comments</h3>
+    {% for comment in comment %}  <!-- Ensure variable is plural if iterating over multiple items -->
+        <div class="card mb-2">
+            <div class="card-body">
+                <p class="card-text">{{ comment.author }} said: "{{ comment.text }}"</p>
             </div>
-            </div>
-        
+        </div>
+    {% empty %}
+        <p>No comments yet.</p>
     {% endfor %}
 </section>
 
-<section>
-    <h3>Add a comment</h3>
+<section class="container mt-4">
+    <h3>Add a Comment</h3>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-success">Submit</button>
     </form>
 </section>
-<style>
-    
-    .content{
-        border: 1px solid black;
-        padding: 15px;
-        border-radius:5px;
-        font-size: 20px;
-    }
-    h2{
-        text-decoration:underline;
-        text-decoration-color:blue;
-        text-decoration-thickness:1px;
-    }
-    
-    .comments-section {
-        margin-top: 30px;
-        background-color: #f8f9fa;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    
-    .comment {
-        padding: 10px;
-        margin: 10px;
-        margin-bottom: 10px;
-        background-color: #ffffff;
-        border-left: 5px solid #007bff;
-        border-radius: 5px;
-    }
-    
-    .add-comment-section {
-        margin-top: 40px;
-        background-color: #f1f1f1;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    
-    .comment-form {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .comment-form p {
-        margin-bottom: 10px;
-    }
-    
-    .btn-success {
-        width: auto;
-        padding: 10px 20px;
-        margin-top: 10px;
-        align-self: flex-end;
-    }
-</style>    
 {% endblock %}

@@ -82,7 +82,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['title', 'content']  # Adjust fields based on your Post model
+    fields = ['title', 'content',"image"]  # Adjust fields based on your Post model
     template_name = 'post_update.html'
     success_url = reverse_lazy('home') 
 
